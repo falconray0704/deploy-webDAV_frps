@@ -1,0 +1,24 @@
+
+# system distributor id (get by lsb_release -is)
+export OSENV_DIST_ID="Raspbian"
+
+# system release number (get by lsb_release -rs)
+export OSENV_DIST_REL_NUM="11"
+
+# system distribution codename (get by lsb_release -cs)
+export OSENV_DIST_CODENAME="bullseye"
+
+# system packages management
+export OSENV_PKG_MANAGE="apt"
+
+
+# os kernel name (get by uname -s)
+export OSENV_KERNEL="Linux"
+
+
+# os name of docker definition
+export OSENV_DOCKER_OS="linux"
+
+# distributor name of docker definition
+# refer to: https://download.docker.com/
+export OSENV_DOCKER_DIST_ID="raspbian"

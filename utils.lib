@@ -1,0 +1,154 @@
+
+exec_items_iterator()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    local exec_items_num=`echo ${exec_items_list}|awk -F"," '{print NF}'`
+    local i
+    for ((i=1;i<=${exec_items_num};i++)); do
+        local item
+        eval item='`echo ${exec_items_list}|awk -F, "{ print $"$i" }"`'
+        local exec_name=${exec_cmd}_${item}
+        ${exec_name} ${exec_cmd} ${item}
+    done
+}
+
+get_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+clean_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+build_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+release_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+install_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+uninstall_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+srcInstall_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+upgrade_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+start_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+stop_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+backup_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+cfg_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+deploy_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+pull_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+push_items()
+{
+    local exec_cmd=$1
+    local exec_items_list=$2
+
+    exec_items_iterator ${exec_cmd} ${exec_items_list} 
+}
+
+
+exists_in_list() {
+    local LIST=$1
+    local DELIMITER=$2
+    local VALUE=$3
+    local LIST_WHITESPACES=`echo $LIST | tr "$DELIMITER" " "`
+
+
+    for x in $LIST_WHITESPACES; do
+        if [ "$x" = "$VALUE" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+
+

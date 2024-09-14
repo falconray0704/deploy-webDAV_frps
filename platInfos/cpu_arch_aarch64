@@ -1,0 +1,14 @@
+
+# os arch (get by uname -m)
+export OSENV_OS_CPU_ARCH="aarch64"
+
+
+# docker cpu arch, 
+# refer to: https://github.com/docker-library/official-images#multiple-architectures
+export OSENV_DOCKER_CPU_ARCH="arm64v8"
+
+
+# docker tag cpu arch, 
+# refer to the tags in: https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated
+export OSENV_DOCKER_TAG_CPU_ARCH="arm64/v8"
+
