@@ -1,0 +1,16 @@
+
+DOWNLOAD_RESOURCE="aria2c --file-allocation=trunc -s10 -x10 -j10 -c"
+
+get_iether_IP4()
+{
+    local IP_val=$(ip addr show $1 | awk '/inet / {print $2}' | cut -d/ -f 1)
+    echo ${IP_val}
+}
+
+get_iether_MAC()
+{
+    local MAC_val=$(ip link show $1 | awk '/ether/ {print $2}')
+    echo ${MAC_val}
+}
+
+

@@ -1,0 +1,7 @@
+
+
+get_sed_path()
+{
+	echo $(echo $1 | sed -e 's/\//\\\//g')
+}
+

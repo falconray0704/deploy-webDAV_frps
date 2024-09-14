@@ -1,0 +1,14 @@
+
+
+current_dir()
+{
+    local CURRENT_DIR_NAME=$(basename $(pwd))
+    echo ${CURRENT_DIR_NAME}
+}
+
+parent_path()
+{
+    local PPATH=$(dirname $(pwd))
+    echo ${PPATH}
+}
+
