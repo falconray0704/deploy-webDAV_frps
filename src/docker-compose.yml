@@ -1,0 +1,22 @@
+version: '3.6'
+services:
+  frps_webDAV:
+    image: "rayruan/amd64_frp:${FRP_VERSION-0.60.0}"
+    container_name: "${SERVER_NAME:-frps_webDAV}"
+    ports:
+      - "${FRPS_SERVER_IP}:${FRPS_BIND_PORT:-7004}:${FRPS_BIND_PORT:-7005}/tcp"
+      - "${FRPS_SERVER_IP}:${FRPS_BIND_PORT:-7004}:${FRPS_BIND_PORT:-7005}/udp"
+    environment:
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ${INSTALL_ROOT_PATH}/${SERVER_NAME}/${CFGS_DIR}/frps.toml:/etc/frp/frps.toml:ro
+      - ${INSTALL_ROOT_PATH}/${SERVER_NAME}/frps_entrypoint.sh:/app/frps_entrypoint.sh:ro
+      - ${INSTALL_ROOT_PATH}/${SERVER_NAME}/${CERTS_DIR}/server.crt:/server.crt:ro
+      - ${INSTALL_ROOT_PATH}/${SERVER_NAME}/${CERTS_DIR}/server.key:/server.key:ro
+      - ${INSTALL_ROOT_PATH}/${SERVER_NAME}/${CERTS_DIR}/rootCA.crt:/ca.crt:ro
+    entrypoint: /app/frps_entrypoint.sh
+    restart: unless-stopped
+
